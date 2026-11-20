@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Member — PustakaKu</title>
+  <meta name="description" content="Dashboard peminjaman dan riwayat transaksi member PustakaKu.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Navbar — tampilan Member yang sudah login -->
+<nav class="navbar" aria-label="Navigasi utama">
+  <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+  <div class="navbar__inner">
+    <a href="index.html" class="navbar__logo" aria-label="PustakaKu - Beranda">
+      <span class="navbar__logo-icon" aria-hidden="true">📚</span>
+      Pustaka<em>Ku</em>
+    </a>
+
+    <span class="navbar__sep"></span>
+
+    <div class="navbar__links" id="navbar-links">
+      <a href="index.html" class="navbar__link">Katalog</a>
+      <a href="member.html" class="navbar__link navbar__link--active" aria-current="page">Dashboard</a>
+      <div class="navbar__user">
+        <div>
+          <p class="navbar__user-name" id="user-display-name">Memuat...</p>
+          <span class="navbar__user-role" id="user-display-tier">Member</span>
+        </div>
+        <button type="button" class="btn btn--outline btn--sm btn--nav" id="btn-logout" data-action="logout">
+          Keluar
+        </button>
+      </div>
+    </div>
+
+    <label for="nav-toggle" class="nav-toggle-btn" aria-label="Buka / tutup menu">
+      <span></span><span></span><span></span>
+    </label>
+  </div>
+</nav>
+
+<main>
+  <div class="container animate-in">
+    <div class="section-header">
+      <h1 class="page-title" style="margin-bottom:0;">Dashboard <span>Member</span></h1>
+      <a href="index.html" class="btn btn--primary btn--sm">+ Pinjam Media Baru</a>
+    </div>
+
+    <!-- Alert notifikasi aksi (kembalikan / upgrade) -->
+    <div class="alert" id="member-alert" role="alert" aria-live="polite"></div>
+
+    <!-- Profil & Kuota Member Card -->
+    <section class="user-card" aria-label="Ringkasan Akun Member">
+      <div>
+        <h2 class="user-card__name" id="member-name">Budi Santoso</h2>
+        <p class="user-card__email" id="member-email">budi@pustakaku.test</p>
+        <div class="user-card__badges">
+          <span class="badge badge--regular" id="badge-tier">Tier: Reguler</span>
+          <span class="badge badge--active" id="badge-status">Status: Aktif</span>
+          <span class="stock-pill" id="member-joined">Bergabung sejak -</span>
+        </div>
+
+        <div class="user-card__stats">
+          <div>
+            <p class="user-card__stat-label">Batas Kuota Pinjam</p>
+            <p class="user-card__stat-value" id="stat-borrow-limit">3 <span>item</span></p>
+          </div>
+          <div>
+            <p class="user-card__stat-label">Durasi Maksimal</p>
+            <p class="user-card__stat-value" id="stat-loan-days">7 <span>hari</span></p>
+          </div>
+          <div>
+            <p class="user-card__stat-label">Tarif Denda</p>
+            <p class="user-card__stat-value" id="stat-fee-discount">Standar <span>(1.0x)</span></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Simulasi Upgrade Premium -->
+      <div id="upgrade-section" style="display:flex; flex-direction:column; align-items:flex-end; gap:var(--sp-2);">
+        <button type="button" class="btn btn--outline" id="btn-upgrade" data-action="upgrade">
+          ★ Upgrade ke Premium
+        </button>
+        <span class="form-hint" style="text-align:right;">Kuota 10 item, durasi 14 hari & diskon denda 50%</span>
+      </div>
+    </section>
+
+    <!-- Pinjaman Aktif -->
+    <section style="margin-bottom: var(--sp-10);" aria-labelledby="heading-active-loans">
+      <div class="section-header">
+        <h2 class="section-title" id="heading-active-loans">Pinjaman Sedang Berjalan</h2>
+        <span class="catalog-meta" style="margin-bottom:0;" id="count-active-loans">1 item aktif</span>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="table" id="table-active-loans">
+          <thead>
+            <tr>
+              <th>ID Transaksi</th>
+              <th>Judul Media</th>
+              <th>Tipe</th>
+              <th>Tanggal Pinjam</th>
+              <th>Jatuh Tempo</th>
+              <th>Status / Denda</th>
+              <th style="text-align:right;">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-active-loans">
+            <!-- Data simulasi / dummy awal T7 -->
+            <tr data-loan-id="L001">
+              <td><code>L89A12B3</code></td>
+              <td><strong>Pemrograman PHP Modern</strong></td>
+              <td><span class="badge badge--ebook">E-Book</span></td>
+              <td>2026-11-15</td>
+              <td>2026-11-22</td>
+              <td><span class="badge badge--active">Aktif</span></td>
+              <td style="text-align:right;">
+                <button type="button" class="btn btn--primary btn--sm" data-action="return" data-loan-id="L001">
+                  Kembalikan
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Riwayat Pengembalian -->
+    <section aria-labelledby="heading-history-loans">
+      <div class="section-header">
+        <h2 class="section-title" id="heading-history-loans">Riwayat Transaksi</h2>
+        <span class="catalog-meta" style="margin-bottom:0;" id="count-history-loans">2 riwayat</span>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="table" id="table-history-loans">
+          <thead>
+            <tr>
+              <th>ID Transaksi</th>
+              <th>Judul Media</th>
+              <th>Tipe</th>
+              <th>Dipinjam</th>
+              <th>Dikembalikan</th>
+              <th>Keterlambatan</th>
+              <th>Denda Dibayar</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-history-loans">
+            <!-- Dummy riwayat T7 -->
+            <tr>
+              <td><code>L44B71C0</code></td>
+              <td>Dasar-Dasar Basis Data Relasional</td>
+              <td><span class="badge badge--ebook">E-Book</span></td>
+              <td>2026-10-01</td>
+              <td>2026-10-07</td>
+              <td>Tepat Waktu (0 hari)</td>
+              <td>Rp 0</td>
+              <td><span class="badge badge--completed">Selesai</span></td>
+            </tr>
+            <tr>
+              <td><code>L21E90D8</code></td>
+              <td>Sejarah Singkat Kerajaan Nusantara</td>
+              <td><span class="badge badge--audiobook">Audiobook</span></td>
+              <td>2026-09-10</td>
+              <td>2026-09-20</td>
+              <td><span class="text-red fw-semi">Terlambat 3 hari</span></td>
+              <td>Rp 9.000</td>
+              <td><span class="badge badge--completed">Selesai</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div><!-- .container -->
+</main>
+
+<footer>
+  <p>PustakaKu &copy; 2026 &mdash; Perpustakaan Digital</p>
+</footer>
+
+<!-- T8: script fetch data member, pengembalian, dan upgrade -->
+<script src="js/api.js" defer></script>
+<script src="js/auth.js" defer></script>
+<script src="js/member.js" defer></script>
+</body>
+</html>

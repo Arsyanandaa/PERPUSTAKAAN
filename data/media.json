@@ -8,7 +8,10 @@
         "year": 2024,
         "stock": 5,
         "fee": 1000,
-        "extra": { "pages": 320, "format": "PDF" }
+        "extra": {
+            "pages": 320,
+            "format": "PDF"
+        }
     },
     {
         "id": "M002",
@@ -19,7 +22,10 @@
         "year": 2023,
         "stock": 4,
         "fee": 1000,
-        "extra": { "pages": 280, "format": "EPUB" }
+        "extra": {
+            "pages": 280,
+            "format": "EPUB"
+        }
     },
     {
         "id": "M003",
@@ -30,7 +36,10 @@
         "year": 2022,
         "stock": 3,
         "fee": 1000,
-        "extra": { "pages": 410, "format": "PDF" }
+        "extra": {
+            "pages": 410,
+            "format": "PDF"
+        }
     },
     {
         "id": "M004",
@@ -41,7 +50,10 @@
         "year": 2025,
         "stock": 6,
         "fee": 1500,
-        "extra": { "pages": 256, "format": "EPUB" }
+        "extra": {
+            "pages": 256,
+            "format": "EPUB"
+        }
     },
     {
         "id": "M005",
@@ -52,7 +64,10 @@
         "year": 2021,
         "stock": 2,
         "fee": 1000,
-        "extra": { "pages": 364, "format": "PDF" }
+        "extra": {
+            "pages": 364,
+            "format": "PDF"
+        }
     },
     {
         "id": "M006",
@@ -63,7 +78,10 @@
         "year": 2023,
         "stock": 4,
         "fee": 500,
-        "extra": { "pages": 198, "format": "EPUB" }
+        "extra": {
+            "pages": 198,
+            "format": "EPUB"
+        }
     },
     {
         "id": "M007",
@@ -74,7 +92,10 @@
         "year": 2023,
         "stock": 3,
         "fee": 2000,
-        "extra": { "durationMinutes": 540, "narrator": "Sinta Lestari" }
+        "extra": {
+            "durationMinutes": 540,
+            "narrator": "Sinta Lestari"
+        }
     },
     {
         "id": "M008",
@@ -85,7 +106,10 @@
         "year": 2024,
         "stock": 3,
         "fee": 2000,
-        "extra": { "durationMinutes": 420, "narrator": "Dimas Anggara" }
+        "extra": {
+            "durationMinutes": 420,
+            "narrator": "Dimas Anggara"
+        }
     },
     {
         "id": "M009",
@@ -96,7 +120,10 @@
         "year": 2022,
         "stock": 2,
         "fee": 1500,
-        "extra": { "durationMinutes": 310, "narrator": "Rani Oktaviani" }
+        "extra": {
+            "durationMinutes": 310,
+            "narrator": "Rani Oktaviani"
+        }
     },
     {
         "id": "M010",
@@ -107,7 +134,10 @@
         "year": 2025,
         "stock": 4,
         "fee": 1000,
-        "extra": { "publisher": "Penerbit Cakrawala Ilmu", "volume": "Vol. 12 No. 2" }
+        "extra": {
+            "publisher": "Penerbit Cakrawala Ilmu",
+            "volume": "Vol. 12 No. 2"
+        }
     },
     {
         "id": "M011",
@@ -118,7 +148,10 @@
         "year": 2024,
         "stock": 0,
         "fee": 1000,
-        "extra": { "publisher": "Penerbit Cakrawala Ilmu", "volume": "Vol. 9 No. 1" }
+        "extra": {
+            "publisher": "Penerbit Cakrawala Ilmu",
+            "volume": "Vol. 9 No. 1"
+        }
     },
     {
         "id": "M012",
@@ -129,6 +162,9 @@
         "year": 2023,
         "stock": 3,
         "fee": 1000,
-        "extra": { "publisher": "Penerbit Mitra Akademika", "volume": "Vol. 7 No. 3" }
+        "extra": {
+            "publisher": "Penerbit Mitra Akademika",
+            "volume": "Vol. 7 No. 3"
+        }
     }
 ]

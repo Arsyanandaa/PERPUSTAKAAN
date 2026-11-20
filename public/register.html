@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daftar — PustakaKu</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-auth">
+
+<main>
+  <div class="auth-card animate-in">
+
+    <div class="auth-card__logo">
+      <a href="index.html" aria-label="PustakaKu - Beranda">
+        <span aria-hidden="true">📚</span> Pustaka<em>Ku</em>
+      </a>
+      <p>Perpustakaan Digital</p>
+    </div>
+
+    <h1 class="auth-card__heading">Buat Akun Baru</h1>
+
+    <!-- Alert global — T8 isi pesan error 422 / email duplikat -->
+    <div class="alert" id="register-alert" role="alert" aria-live="polite"></div>
+
+    <form id="form-register" data-action="register" novalidate autocomplete="on">
+
+      <div class="form-group">
+        <label class="form-label" for="name">
+          Nama Lengkap <abbr title="wajib diisi">*</abbr>
+        </label>
+        <input
+          id="name" name="name" type="text"
+          class="form-input"
+          placeholder="Nama Anda"
+          autocomplete="name"
+          required
+          minlength="3" maxlength="50"
+        >
+        <span class="form-error" id="err-name" role="alert"></span>
+        <span class="form-hint">3 sampai 50 karakter</span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="email">
+          Alamat Email <abbr title="wajib diisi">*</abbr>
+        </label>
+        <input
+          id="email" name="email" type="email"
+          class="form-input"
+          placeholder="nama@contoh.com"
+          autocomplete="email"
+          inputmode="email"
+          required
+        >
+        <span class="form-error" id="err-email" role="alert"></span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="password">
+          Kata Sandi <abbr title="wajib diisi">*</abbr>
+        </label>
+        <input
+          id="password" name="password" type="password"
+          class="form-input"
+          placeholder="••••••••"
+          autocomplete="new-password"
+          required
+          minlength="8" maxlength="72"
+        >
+        <span class="form-error" id="err-password" role="alert"></span>
+        <span class="form-hint">8–72 karakter, kombinasi huruf dan angka</span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="confirmPassword">
+          Konfirmasi Kata Sandi <abbr title="wajib diisi">*</abbr>
+        </label>
+        <input
+          id="confirmPassword" name="confirmPassword" type="password"
+          class="form-input"
+          placeholder="••••••••"
+          autocomplete="new-password"
+          required
+        >
+        <span class="form-error" id="err-confirmPassword" role="alert"></span>
+      </div>
+
+      <button type="submit" class="btn btn--primary btn--full" id="btn-register">
+        Buat Akun
+      </button>
+
+    </form>
+
+    <div class="auth-card__footer">
+      Sudah punya akun? <a href="login.html">Masuk di sini</a>
+    </div>
+
+  </div>
+</main>
+
+<!-- T8: validasi client-side (validator.js) + fetch POST /auth/register -->
+<script src="js/api.js" defer></script>
+<script src="js/validator.js" defer></script>
+<script src="js/auth.js" defer></script>
+</body>
+</html>

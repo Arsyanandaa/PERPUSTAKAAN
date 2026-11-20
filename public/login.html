@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masuk — PustakaKu</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-auth">
+
+<main>
+  <div class="auth-card animate-in">
+
+    <div class="auth-card__logo">
+      <a href="index.html" aria-label="PustakaKu - Beranda">
+        <span aria-hidden="true">📚</span> Pustaka<em>Ku</em>
+      </a>
+      <p>Perpustakaan Digital</p>
+    </div>
+
+    <h1 class="auth-card__heading">Masuk ke Akun</h1>
+
+    <!-- Alert global — T8 isi pesan error 401/403 di sini -->
+    <div class="alert" id="login-alert" role="alert" aria-live="polite"></div>
+
+    <form id="form-login" data-action="login" novalidate autocomplete="on">
+
+      <div class="form-group">
+        <label class="form-label" for="email">
+          Alamat Email <abbr title="wajib diisi">*</abbr>
+        </label>
+        <input
+          id="email" name="email" type="email"
+          class="form-input"
+          placeholder="nama@contoh.com"
+          autocomplete="email"
+          inputmode="email"
+          required
+        >
+        <!-- T8: tampilkan error per-field di sini -->
+        <span class="form-error" id="err-email" role="alert"></span>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="password">
+          Kata Sandi <abbr title="wajib diisi">*</abbr>
+        </label>
+        <input
+          id="password" name="password" type="password"
+          class="form-input"
+          placeholder="••••••••"
+          autocomplete="current-password"
+          required
+        >
+        <span class="form-error" id="err-password" role="alert"></span>
+      </div>
+
+      <button type="submit" class="btn btn--primary btn--full" id="btn-login">
+        Masuk
+      </button>
+
+    </form>
+
+    <div class="auth-card__footer">
+      Belum punya akun? <a href="register.html">Daftar sekarang</a>
+    </div>
+
+  </div>
+</main>
+
+<!-- T8: validasi form + fetch POST /auth/login + redirect -->
+<script src="js/api.js" defer></script>
+<script src="js/validator.js" defer></script>
+<script src="js/auth.js" defer></script>
+</body>
+</html>

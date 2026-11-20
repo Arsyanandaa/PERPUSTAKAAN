@@ -1,1 +1,12 @@
-[]
+[
+    {
+        "id": "L0E202A5F",
+        "userId": "U003",
+        "mediaId": "M001",
+        "borrowedAt": "2026-11-20",
+        "dueAt": "2026-12-04",
+        "returnedAt": "2026-11-20",
+        "fee": 0,
+        "status": "completed"
+    }
+]

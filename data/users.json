@@ -38,5 +38,15 @@
         "passwordHash": "$2y$10$PowUFnTcw/K3AtftRw5gpOw0HVPkVC4c.fNOZgyIeQTWCv3lco0O.",
         "status": "inactive",
         "joinedAt": "2026-04-02"
+    },
+    {
+        "id": "U20482F20",
+        "role": "member",
+        "tier": "premium",
+        "name": "Abi Danadhyaksa",
+        "email": "abidanadhyaksa05@gmail.com",
+        "passwordHash": "$2y$12$bWvVS4hyoC7ZzZuXk14lkeQb.bu2qNJF.pkxGcyHJVU23S4Q7HkxK",
+        "status": "active",
+        "joinedAt": "2026-11-20"
     }
 ]

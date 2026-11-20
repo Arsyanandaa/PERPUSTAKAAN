@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katalog — PustakaKu</title>
+  <meta name="description" content="Perpustakaan digital: e-book, audiobook, dan jurnal ilmiah.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Navbar — tampilan tamu (login/daftar ditampilkan) -->
+<!-- T8: ganti bagian kanan dengan info user saat sudah login -->
+<nav class="navbar" aria-label="Navigasi utama">
+  <input type="checkbox" id="nav-toggle" class="nav-toggle-input">
+  <div class="navbar__inner">
+    <a href="index.html" class="navbar__logo" aria-label="PustakaKu - Beranda">
+      <span class="navbar__logo-icon" aria-hidden="true">📚</span>
+      Pustaka<em>Ku</em>
+    </a>
+
+    <span class="navbar__sep"></span>
+
+    <div class="navbar__links" id="navbar-links">
+      <a href="index.html" class="navbar__link navbar__link--active" aria-current="page">Beranda</a>
+      <a href="login.html" class="navbar__link">Masuk</a>
+      <a href="register.html" class="btn btn--outline btn--sm btn--nav">Daftar</a>
+    </div>
+
+    <label for="nav-toggle" class="nav-toggle-btn" aria-label="Buka / tutup menu">
+      <span></span><span></span><span></span>
+    </label>
+  </div>
+</nav>
+
+<main>
+  <div class="container animate-in">
+    <h1 class="page-title">Katalog <span>Media</span></h1>
+
+    <!-- Filter bar -->
+    <form class="filter-bar" data-action="filter-catalog" role="search" aria-label="Filter katalog">
+      <div class="filter-bar__search">
+        <label class="form-label text-xs" for="q">Cari judul atau penulis</label>
+        <div class="input-search-wrap">
+          <input id="q" name="q" type="search" class="form-input"
+                 placeholder="mis. PHP, Arman, Jurnal..." autocomplete="off">
+        </div>
+      </div>
+      <div class="filter-bar__selects">
+        <div class="filter-bar__select">
+          <label class="form-label text-xs" for="filter-category">Kategori</label>
+          <!-- T8: isi opsi dari GET /api.php/catalog/categories -->
+          <select id="filter-category" name="category" class="form-select" data-source="categories">
+            <option value="">Semua Kategori</option>
+            <option>Bisnis</option>
+            <option>Pendidikan</option>
+            <option>Sains</option>
+            <option>Sastra</option>
+            <option>Sejarah</option>
+            <option>Teknologi</option>
+          </select>
+        </div>
+        <div class="filter-bar__select">
+          <label class="form-label text-xs" for="filter-type">Tipe Media</label>
+          <select id="filter-type" name="type" class="form-select">
+            <option value="">Semua Tipe</option>
+            <option value="ebook">E-Book</option>
+            <option value="audiobook">Audiobook</option>
+            <option value="journal">Jurnal</option>
+          </select>
+        </div>
+        <div style="display:flex;align-items:flex-end;">
+          <button type="submit" class="btn btn--primary btn--sm">Cari</button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Pesan alert (slot T8: error fetch, dll.) -->
+    <div class="alert" id="catalog-alert" role="alert" aria-live="polite"></div>
+
+    <!-- Jumlah hasil — T8 perbarui angka ini -->
+    <p class="catalog-meta">Menampilkan <strong id="catalog-count">12</strong> media</p>
+
+    <!-- Grid kartu media — T8 render ulang dari API, ini data dummy T7 -->
+    <div class="card-grid" id="catalog-grid">
+
+      <article class="media-card" data-type="ebook" data-id="M001">
+        <div class="media-card__header">
+          <span class="badge badge--ebook">E-Book</span>
+          <span class="stock-pill">Stok: 5</span>
+        </div>
+        <div>
+          <h2 class="media-card__title">Pemrograman PHP Modern</h2>
+          <p class="media-card__author">Arman Pratama</p>
+        </div>
+        <div class="media-card__meta">
+          <span>Teknologi</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>2024</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>320 hal · PDF</span>
+        </div>
+        <div class="media-card__footer">
+          <div class="media-card__fee">Denda <strong>Rp 1.000</strong>/hari</div>
+          <!-- T8: ganti href jadi button data-action="borrow" saat login sebagai member -->
+          <a href="login.html" class="btn btn--outline btn--sm">Pinjam</a>
+        </div>
+      </article>
+
+      <article class="media-card" data-type="ebook" data-id="M002">
+        <div class="media-card__header">
+          <span class="badge badge--ebook">E-Book</span>
+          <span class="stock-pill">Stok: 4</span>
+        </div>
+        <div>
+          <h2 class="media-card__title">Struktur Data untuk Pemula</h2>
+          <p class="media-card__author">Dewi Lestari Putri</p>
+        </div>
+        <div class="media-card__meta">
+          <span>Teknologi</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>2023</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>280 hal · EPUB</span>
+        </div>
+        <div class="media-card__footer">
+          <div class="media-card__fee">Denda <strong>Rp 1.000</strong>/hari</div>
+          <a href="login.html" class="btn btn--outline btn--sm">Pinjam</a>
+        </div>
+      </article>
+
+      <article class="media-card" data-type="ebook" data-id="M003">
+        <div class="media-card__header">
+          <span class="badge badge--ebook">E-Book</span>
+          <span class="stock-pill">Stok: 3</span>
+        </div>
+        <div>
+          <h2 class="media-card__title">Dasar-Dasar Basis Data Relasional</h2>
+          <p class="media-card__author">Hendra Wijaya</p>
+        </div>
+        <div class="media-card__meta">
+          <span>Teknologi</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>2022</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>410 hal · PDF</span>
+        </div>
+        <div class="media-card__footer">
+          <div class="media-card__fee">Denda <strong>Rp 1.000</strong>/hari</div>
+          <a href="login.html" class="btn btn--outline btn--sm">Pinjam</a>
+        </div>
+      </article>
+
+      <article class="media-card" data-type="ebook" data-id="M004">
+        <div class="media-card__header">
+          <span class="badge badge--ebook">E-Book</span>
+          <span class="stock-pill">Stok: 6</span>
+        </div>
+        <div>
+          <h2 class="media-card__title">Mengenal Kecerdasan Buatan</h2>
+          <p class="media-card__author">Sari Maharani</p>
+        </div>
+        <div class="media-card__meta">
+          <span>Sains</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>2025</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>256 hal · EPUB</span>
+        </div>
+        <div class="media-card__footer">
+          <div class="media-card__fee">Denda <strong>Rp 1.500</strong>/hari</div>
+          <a href="login.html" class="btn btn--outline btn--sm">Pinjam</a>
+        </div>
+      </article>
+
+      <article class="media-card" data-type="ebook" data-id="M005">
+        <div class="media-card__header">
+          <span class="badge badge--ebook">E-Book</span>
+          <span class="stock-pill stock-pill--low">Stok: 2</span>
+        </div>
+        <div>
+          <h2 class="media-card__title">Jejak Perdagangan di Nusantara</h2>
+          <p class="media-card__author">Raden Kusuma</p>
+        </div>
+        <div class="media-card__meta">
+          <span>Sejarah</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>2021</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>364 hal · PDF</span>
+        </div>
+        <div class="media-card__footer">
+          <div class="media-card__fee">Denda <strong>Rp 1.000</strong>/hari</div>
+          <a href="login.html" class="btn btn--outline btn--sm">Pinjam</a>
+        </div>
+      </article>
+
+      <article class="media-card" data-type="ebook" data-id="M006">
+        <div class="media-card__header">
+          <span class="badge badge--ebook">E-Book</span>
+          <span class="stock-pill">Stok: 4</span>
+        </div>
+        <div>
+          <h2 class="media-card__title">Kopi dan Senja di Kota Tua</h2>
+          <p class="media-card__author">Laras Ayu Pertiwi</p>
+        </div>
+        <div class="media-card__meta">
+          <span>Sastra</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>2023</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>198 hal · EPUB</span>
+        </div>
+        <div class="media-card__footer">
+          <div class="media-card__fee">Denda <strong>Rp 500</strong>/hari</div>
+          <a href="login.html" class="btn btn--outline btn--sm">Pinjam</a>
+        </div>
+      </article>
+
+      <article class="media-card" data-type="audiobook" data-id="M007">
+        <div class="media-card__header">
+          <span class="badge badge--audiobook">Audiobook</span>
+          <span class="stock-pill">Stok: 3</span>
+        </div>
+        <div>
+          <h2 class="media-card__title">Sejarah Singkat Kerajaan Nusantara</h2>
+          <p class="media-card__author">Rudi Wijaya</p>
+        </div>
+        <div class="media-card__meta">
+          <span>Sejarah</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>2023</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>540 menit · Sinta Lestari</span>
+        </div>
+        <div class="media-card__footer">
+          <div class="media-card__fee">Denda <strong>Rp 2.000</strong>/hari</div>
+          <a href="login.html" class="btn btn--outline btn--sm">Pinjam</a>
+        </div>
+      </article>
+
+      <article class="media-card" data-type="audiobook" data-id="M008">
+        <div class="media-card__header">
+          <span class="badge badge--audiobook">Audiobook</span>
+          <span class="stock-pill">Stok: 3</span>
+        </div>
+        <div>
+          <h2 class="media-card__title">Memulai Usaha dari Nol</h2>
+          <p class="media-card__author">Bayu Santoso</p>
+        </div>
+        <div class="media-card__meta">
+          <span>Bisnis</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>2024</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>420 menit · Dimas Anggara</span>
+        </div>
+        <div class="media-card__footer">
+          <div class="media-card__fee">Denda <strong>Rp 2.000</strong>/hari</div>
+          <a href="login.html" class="btn btn--outline btn--sm">Pinjam</a>
+        </div>
+      </article>
+
+      <article class="media-card" data-type="audiobook" data-id="M009">
+        <div class="media-card__header">
+          <span class="badge badge--audiobook">Audiobook</span>
+          <span class="stock-pill stock-pill--low">Stok: 2</span>
+        </div>
+        <div>
+          <h2 class="media-card__title">Cerita Rakyat dari Timur</h2>
+          <p class="media-card__author">Maya Kartika</p>
+        </div>
+        <div class="media-card__meta">
+          <span>Sastra</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>2022</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>310 menit · Rani Oktaviani</span>
+        </div>
+        <div class="media-card__footer">
+          <div class="media-card__fee">Denda <strong>Rp 1.500</strong>/hari</div>
+          <a href="login.html" class="btn btn--outline btn--sm">Pinjam</a>
+        </div>
+      </article>
+
+      <article class="media-card" data-type="journal" data-id="M010">
+        <div class="media-card__header">
+          <span class="badge badge--journal">Jurnal</span>
+          <span class="stock-pill">Stok: 4</span>
+        </div>
+        <div>
+          <h2 class="media-card__title">Jurnal Teknologi Informasi dan Komputasi</h2>
+          <p class="media-card__author">Tim Redaksi JTIK</p>
+        </div>
+        <div class="media-card__meta">
+          <span>Teknologi</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>2025</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>Vol. 12 No. 2</span>
+        </div>
+        <div class="media-card__footer">
+          <div class="media-card__fee">Denda <strong>Rp 1.000</strong>/hari</div>
+          <a href="login.html" class="btn btn--outline btn--sm">Pinjam</a>
+        </div>
+      </article>
+
+      <article class="media-card" data-type="journal" data-id="M011">
+        <div class="media-card__header">
+          <span class="badge badge--journal">Jurnal</span>
+          <span class="stock-pill stock-pill--out">Stok: 0</span>
+        </div>
+        <div>
+          <h2 class="media-card__title">Jurnal Pendidikan dan Pembelajaran</h2>
+          <p class="media-card__author">Tim Redaksi JPP</p>
+        </div>
+        <div class="media-card__meta">
+          <span>Pendidikan</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>2024</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>Vol. 9 No. 1</span>
+        </div>
+        <div class="media-card__footer">
+          <div class="media-card__fee">Denda <strong>Rp 1.000</strong>/hari</div>
+          <button class="btn btn--ghost btn--sm" disabled aria-disabled="true">Stok Habis</button>
+        </div>
+      </article>
+
+      <article class="media-card" data-type="journal" data-id="M012">
+        <div class="media-card__header">
+          <span class="badge badge--journal">Jurnal</span>
+          <span class="stock-pill">Stok: 3</span>
+        </div>
+        <div>
+          <h2 class="media-card__title">Jurnal Ekonomi dan Kewirausahaan</h2>
+          <p class="media-card__author">Tim Redaksi JEK</p>
+        </div>
+        <div class="media-card__meta">
+          <span>Bisnis</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>2023</span>
+          <span class="media-card__meta-sep" aria-hidden="true">·</span>
+          <span>Vol. 7 No. 3</span>
+        </div>
+        <div class="media-card__footer">
+          <div class="media-card__fee">Denda <strong>Rp 1.000</strong>/hari</div>
+          <a href="login.html" class="btn btn--outline btn--sm">Pinjam</a>
+        </div>
+      </article>
+
+    </div><!-- .card-grid -->
+  </div><!-- .container -->
+</main>
+
+<footer>
+  <p>PustakaKu &copy; 2026 &mdash; Perpustakaan Digital</p>
+</footer>
+
+<!-- T8: script fetch katalog + interaksi pinjam + sinkronisasi auth navbar -->
+<script src="js/api.js" defer></script>
+<script src="js/auth.js" defer></script>
+<script src="js/catalog.js" defer></script>
+</body>
+</html>

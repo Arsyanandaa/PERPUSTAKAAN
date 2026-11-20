@@ -7,7 +7,9 @@ declare(strict_types=1);
  */
 
 use App\Controllers\AuthController;
+use App\Controllers\CatalogController;
 use App\Controllers\LoanController;
+use App\Controllers\MemberController;
 use App\Core\Response;
 use App\Core\Router;
 use App\Core\Session;
@@ -15,7 +17,9 @@ use App\Repositories\LoanRepository;
 use App\Repositories\MediaRepository;
 use App\Repositories\UserRepository;
 use App\Services\AuthService;
+use App\Services\CatalogService;
 use App\Services\LoanService;
+use App\Services\MemberService;
 
 $config = require __DIR__ . '/../bootstrap.php';
 
@@ -58,6 +62,10 @@ $loanService = new LoanService($loans, $media, $users);
 $auth = new AuthController($authService);
 $loan = new LoanController($loanService, $authService);
 
+// T6 (Anggota 2)
+$catalog = new CatalogController(new CatalogService($media, $loans), $authService);
+$members = new MemberController(new MemberService($users), $authService);
+
 // ---- routes ----
 $router = new Router();
 
@@ -72,13 +80,15 @@ $router->get('/loans',              $loan->history(...));
 
 $router->post('/members/upgrade', $auth->upgrade(...));
 
-// TODO (Anggota 2, T6): daftarkan route katalog dan member admin di sini, contoh:
-// $catalog = new CatalogController(new CatalogService($media), $authService);
-// $router->get('/catalog', $catalog->index(...));
-// $router->post('/catalog', $catalog->store(...));
-// $router->put('/catalog/{id}', $catalog->update(...));
-// $router->delete('/catalog/{id}', $catalog->destroy(...));
-// $router->get('/members', $members->index(...));
-// $router->patch('/members/{id}/status', $members->setStatus(...));
+// Katalog: GET publik, tulis khusus admin. /catalog/categories harus didaftarkan SEBELUM /catalog/{id}.
+$router->get('/catalog',            $catalog->index(...));
+$router->get('/catalog/categories', $catalog->categories(...));
+$router->post('/catalog',           $catalog->store(...));
+$router->put('/catalog/{id}',       $catalog->update(...));
+$router->delete('/catalog/{id}',    $catalog->destroy(...));
+
+// Member (admin)
+$router->get('/members',                 $members->index(...));
+$router->patch('/members/{id}/status',   $members->setStatus(...));
 
 $router->dispatch($_SERVER['REQUEST_METHOD'] ?? 'GET', $path, $_GET, $body)->send();
