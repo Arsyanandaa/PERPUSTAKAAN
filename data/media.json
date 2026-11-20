@@ -1,0 +1,134 @@
+[
+    {
+        "id": "M001",
+        "type": "ebook",
+        "title": "Pemrograman PHP Modern",
+        "author": "Arman Pratama",
+        "category": "Teknologi",
+        "year": 2024,
+        "stock": 5,
+        "fee": 1000,
+        "extra": { "pages": 320, "format": "PDF" }
+    },
+    {
+        "id": "M002",
+        "type": "ebook",
+        "title": "Struktur Data untuk Pemula",
+        "author": "Dewi Lestari Putri",
+        "category": "Teknologi",
+        "year": 2023,
+        "stock": 4,
+        "fee": 1000,
+        "extra": { "pages": 280, "format": "EPUB" }
+    },
+    {
+        "id": "M003",
+        "type": "ebook",
+        "title": "Dasar-Dasar Basis Data Relasional",
+        "author": "Hendra Wijaya",
+        "category": "Teknologi",
+        "year": 2022,
+        "stock": 3,
+        "fee": 1000,
+        "extra": { "pages": 410, "format": "PDF" }
+    },
+    {
+        "id": "M004",
+        "type": "ebook",
+        "title": "Mengenal Kecerdasan Buatan",
+        "author": "Sari Maharani",
+        "category": "Sains",
+        "year": 2025,
+        "stock": 6,
+        "fee": 1500,
+        "extra": { "pages": 256, "format": "EPUB" }
+    },
+    {
+        "id": "M005",
+        "type": "ebook",
+        "title": "Jejak Perdagangan di Nusantara",
+        "author": "Raden Kusuma",
+        "category": "Sejarah",
+        "year": 2021,
+        "stock": 2,
+        "fee": 1000,
+        "extra": { "pages": 364, "format": "PDF" }
+    },
+    {
+        "id": "M006",
+        "type": "ebook",
+        "title": "Kopi dan Senja di Kota Tua",
+        "author": "Laras Ayu Pertiwi",
+        "category": "Sastra",
+        "year": 2023,
+        "stock": 4,
+        "fee": 500,
+        "extra": { "pages": 198, "format": "EPUB" }
+    },
+    {
+        "id": "M007",
+        "type": "audiobook",
+        "title": "Sejarah Singkat Kerajaan Nusantara",
+        "author": "Rudi Wijaya",
+        "category": "Sejarah",
+        "year": 2023,
+        "stock": 3,
+        "fee": 2000,
+        "extra": { "durationMinutes": 540, "narrator": "Sinta Lestari" }
+    },
+    {
+        "id": "M008",
+        "type": "audiobook",
+        "title": "Memulai Usaha dari Nol",
+        "author": "Bayu Santoso",
+        "category": "Bisnis",
+        "year": 2024,
+        "stock": 3,
+        "fee": 2000,
+        "extra": { "durationMinutes": 420, "narrator": "Dimas Anggara" }
+    },
+    {
+        "id": "M009",
+        "type": "audiobook",
+        "title": "Cerita Rakyat dari Timur",
+        "author": "Maya Kartika",
+        "category": "Sastra",
+        "year": 2022,
+        "stock": 2,
+        "fee": 1500,
+        "extra": { "durationMinutes": 310, "narrator": "Rani Oktaviani" }
+    },
+    {
+        "id": "M010",
+        "type": "journal",
+        "title": "Jurnal Teknologi Informasi dan Komputasi",
+        "author": "Tim Redaksi JTIK",
+        "category": "Teknologi",
+        "year": 2025,
+        "stock": 4,
+        "fee": 1000,
+        "extra": { "publisher": "Penerbit Cakrawala Ilmu", "volume": "Vol. 12 No. 2" }
+    },
+    {
+        "id": "M011",
+        "type": "journal",
+        "title": "Jurnal Pendidikan dan Pembelajaran",
+        "author": "Tim Redaksi JPP",
+        "category": "Pendidikan",
+        "year": 2024,
+        "stock": 0,
+        "fee": 1000,
+        "extra": { "publisher": "Penerbit Cakrawala Ilmu", "volume": "Vol. 9 No. 1" }
+    },
+    {
+        "id": "M012",
+        "type": "journal",
+        "title": "Jurnal Ekonomi dan Kewirausahaan",
+        "author": "Tim Redaksi JEK",
+        "category": "Bisnis",
+        "year": 2023,
+        "stock": 3,
+        "fee": 1000,
+        "extra": { "publisher": "Penerbit Mitra Akademika", "volume": "Vol. 7 No. 3" }
+    }
+]

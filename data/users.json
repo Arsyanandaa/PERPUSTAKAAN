@@ -1,0 +1,42 @@
+[
+    {
+        "id": "U001",
+        "role": "admin",
+        "tier": "none",
+        "name": "Admin Perpustakaan",
+        "email": "admin@pustakaku.test",
+        "passwordHash": "$2y$10$75T0yNpokImLLlVK1ysqQuiaULtm26BoUxgfxzqaqd5lfyIudJsC.",
+        "status": "active",
+        "joinedAt": "2026-01-05"
+    },
+    {
+        "id": "U002",
+        "role": "member",
+        "tier": "regular",
+        "name": "Siti Rahma",
+        "email": "siti@pustakaku.test",
+        "passwordHash": "$2y$10$PowUFnTcw/K3AtftRw5gpOw0HVPkVC4c.fNOZgyIeQTWCv3lco0O.",
+        "status": "active",
+        "joinedAt": "2026-02-10"
+    },
+    {
+        "id": "U003",
+        "role": "member",
+        "tier": "premium",
+        "name": "Budi Santoso",
+        "email": "budi@pustakaku.test",
+        "passwordHash": "$2y$10$PowUFnTcw/K3AtftRw5gpOw0HVPkVC4c.fNOZgyIeQTWCv3lco0O.",
+        "status": "active",
+        "joinedAt": "2026-03-18"
+    },
+    {
+        "id": "U004",
+        "role": "member",
+        "tier": "regular",
+        "name": "Rina Marlina",
+        "email": "rina@pustakaku.test",
+        "passwordHash": "$2y$10$PowUFnTcw/K3AtftRw5gpOw0HVPkVC4c.fNOZgyIeQTWCv3lco0O.",
+        "status": "inactive",
+        "joinedAt": "2026-04-02"
+    }
+]
